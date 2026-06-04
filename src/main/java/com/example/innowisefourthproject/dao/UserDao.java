@@ -1,7 +1,13 @@
 package com.example.innowisefourthproject.dao;
 
+import com.example.innowisefourthproject.entity.User;
 import com.example.innowisefourthproject.exception.DaoException;
 
-public interface UserDao {
-    boolean authenticate(String login, String password) throws DaoException;
+import java.util.Optional;
+
+public interface UserDao extends BaseDao<User> {
+
+    Optional<User> findByLogin(String login) throws DaoException;
+
+    boolean existsByLogin(String login) throws DaoException;
 }

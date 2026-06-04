@@ -2,31 +2,29 @@
 
 <html>
 <head>
-    <title>Sign in</title>
+    <title>Registration</title>
 </head>
 <body>
-<h2>Sign in</h2>
-
+<h2>Registration</h2>
 <form action="${pageContext.request.contextPath}/controller" method="post">
-    <input type="hidden" name="command" value="login">
+    <input type="hidden" name="command" value="add_user">
 
     <label>Login:</label>
     <input type="text" name="login" required>
 
-    <br><br>
+    <label>Name:</label>
+    <input type="text" name="name" required>
 
     <label>Password:</label>
     <input type="password" name="pass" required>
 
-    <br><br>
-
-    <button type="submit">Sign in</button>
+    <button type="submit">Sign up</button>
 </form>
 
-<p style="color:red;"><c:out value="${login_msg}"/></p>
+<p style="color:green;"><c:out value="${register_msg}"/></p>
 <hr>
 
-<a href="${pageContext.request.contextPath}/pages/register.jsp">Create account</a>
+<a href="${pageContext.request.contextPath}/index.jsp">Back to sign in</a>
 
 </body>
 </html>

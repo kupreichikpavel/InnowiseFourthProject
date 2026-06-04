@@ -1,51 +1,67 @@
 package com.example.innowisefourthproject.controller;
 
-import java.io.*;
-
 import com.example.innowisefourthproject.command.Command;
 import com.example.innowisefourthproject.command.CommandType;
 import com.example.innowisefourthproject.exception.CommandException;
 import com.example.innowisefourthproject.pool.ConnectionPool;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@WebServlet(name = "helloServlet", urlPatterns = "/controller")
-public class Controller extends HttpServlet {
-    static Logger logger = LogManager.getLogger();
+import java.io.IOException;
 
+@WebServlet(name = "controller", urlPatterns = "/controller")
+public class Controller extends HttpServlet {
+    private static final Logger logger = LogManager.getLogger(Controller.class);
+
+    @Override
     public void init() {
-        logger.log(Level.INFO, "----->>> Servlet Init" + this.getServletInfo());
+        logger.log(Level.INFO, "Servlet initialized: {}", this.getServletInfo());
         ConnectionPool.getInstance();
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
-        String commandStr = request.getParameter("command");
-        Command command = CommandType.define(commandStr);
-        String page = null;
-        try {
-            page = command.execute(request);
-            request.getRequestDispatcher(page).forward(request, response);
-        } catch (CommandException e) {
-            // 1 response.sendError(500);
-            //  2 throw new ServletException(e);
-            request.setAttribute("error_,msg", e.getCause());
-            request.getRequestDispatcher("pages/error_500.jsp").forward(request, response);
-        }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        processRequest(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        processRequest(request, response);
     }
-
+    @Override
     public void destroy() {
         ConnectionPool.getInstance().destroyPool();
-        logger.log(Level.INFO, "----->>> Servlet Destroyed" + this.getServletInfo());
+        logger.log(Level.INFO, "Servlet destroyed: {}", this.getServletInfo());
+    }
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+
+
+        String commandStr = request.getParameter("command");
+        logger.info("Command from request: {}", commandStr);
+        Command command = CommandType.define(commandStr);
+        logger.info("Command class: {}", command.getClass().getSimpleName());
+
+
+        try {
+            String page = command.execute(request);
+            logger.info("Page after command: {}", page);
+            request.getRequestDispatcher(page).forward(request, response);
+        } catch (CommandException e) {
+            logger.error("Command execution failed", e);
+            request.setAttribute("error_msg", e.getMessage());
+            request.getRequestDispatcher("pages/error_500.jsp").forward(request, response);
+        }
     }
 }

@@ -1,25 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: alexey
-  Date: 27.05.2026
-  Time: 11:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <title>Main</title>
 </head>
 <body>
-Hello = ${user}
-<br/>
-Hi (redirect/forward) = ${user}
+<h2>Main page</h2>
+
+Hello = <c:out value="${sessionScope.user.name}"/>
+
 <hr/>
-${filter_attr}
+
+<a href="${pageContext.request.contextPath}/controller?command=show_items">
+    Show items
+</a>
+
+<a href="${pageContext.request.contextPath}/controller?command=show_orders">
+    My orders
+</a>
+
 <hr/>
-<form action="controller">
+
+<form action="${pageContext.request.contextPath}/controller" method="post">
     <input type="hidden" name="command" value="logout">
     <input type="submit" value="logOut">
 </form>
+
 </body>
 </html>

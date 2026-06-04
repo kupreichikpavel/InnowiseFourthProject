@@ -1,29 +1,26 @@
 package com.example.innowisefourthproject.entity;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
 @Setter
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class User extends AbstractEntity {
     private String login;
-    private String password;
+    private String passwordHash;
+    private String name;
+    private Role role;
 
-    public String getLogin() {
-        return login;
+    public boolean isAdmin() {
+        return role == Role.ADMIN;
     }
 
-    public void setLogin(String login) {
+    public User(long id, String login, String passwordHash, String name, Role role) {
+        super(id);
         this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+        this.passwordHash = passwordHash;
+        this.name = name;
+        this.role = role;
     }
 }

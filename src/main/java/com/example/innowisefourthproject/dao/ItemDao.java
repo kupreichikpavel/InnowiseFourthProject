@@ -1,4 +1,7 @@
 package com.example.innowisefourthproject.dao;
 
-public interface ItemDao {
+import com.example.innowisefourthproject.entity.Item;
+
+public interface ItemDao extends BaseDao<Item> {
+
 }
