@@ -309,17 +309,6 @@ Implemented:
 * Logging
 * JSTL pages
 
-## TODO
-
-Recommended improvements:
-
-* Add Post/Redirect/Get pattern to prevent repeated POST actions after pressing F5
-* Add Web-service endpoint, for example `/api/items`
-* Add JUnit and Mockito tests
-* Add more Javadoc comments
-* Improve CSS styling
-* Move real database password out of GitHub
-* Replace all unsafe JSP output with `<c:out>`
 
 ## Author
 
