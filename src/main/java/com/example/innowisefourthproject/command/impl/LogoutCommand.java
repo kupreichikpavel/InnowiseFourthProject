@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 public class LogoutCommand implements Command {
-    private static final String INDEX_PAGE = "index.jsp";
+    private static final String REDIRECT_INDEX = "redirect:/index.jsp";
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -15,6 +15,6 @@ public class LogoutCommand implements Command {
             session.invalidate();
         }
 
-        return INDEX_PAGE;
+        return REDIRECT_INDEX;
     }
 }

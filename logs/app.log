@@ -1337,3 +1337,321 @@ Caused by: org.postgresql.util.PSQLException: ERROR: new row for relation "order
 2026-06-05 02:01:09 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.service.impl.OrderServiceImpl - findOrders in db
 2026-06-05 02:01:09 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.dao.impl.OrderDaoImpl - Finding all orders
 2026-06-05 02:01:09 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/orders.jsp
+2026-06-05 02:15:52 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was destroyed
+2026-06-05 02:15:52 [main] INFO  com.example.innowisefourthproject.controller.Controller - Servlet destroyed: 
+2026-06-05 02:15:52 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 8A826FA6E1F8418D764C68520276813E
+2026-06-05 02:15:52 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 3EFFA469E249901C3D10A30F189134C3
+2026-06-05 02:15:52 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 17:31:02 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 17:31:02 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 3E3A20D870F01677C8C20C7B341C1843
+2026-06-06 17:31:02 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: A59E0F24EF029473052073EF4ECE6352
+2026-06-06 17:31:11 [http-nio-8080-exec-5] FATAL com.example.innowisefourthproject.pool.ConnectionPool - Connection pool initialization failed
+org.postgresql.util.PSQLException: Подсоединение по адресу localhost:5432 отклонено. Проверьте что хост и порт указаны правильно и что postmaster принимает TCP/IP-подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:373) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:57) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:277) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.Driver.makeConnection(Driver.java:448) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.Driver.connect(Driver.java:298) ~[postgresql-42.7.7.jar:42.7.7]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681) ~[java.sql:?]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229) ~[java.sql:?]
+	at com.example.innowisefourthproject.pool.ConnectionPool.<init>(ConnectionPool.java:38) [classes/:?]
+	at com.example.innowisefourthproject.pool.ConnectionPool$Holder.<clinit>(ConnectionPool.java:57) [classes/:?]
+	at com.example.innowisefourthproject.pool.ConnectionPool.getInstance(ConnectionPool.java:61) [classes/:?]
+	at com.example.innowisefourthproject.dao.impl.ItemDaoImpl.<init>(ItemDaoImpl.java:21) [classes/:?]
+	at com.example.innowisefourthproject.dao.impl.ItemDaoImpl.<clinit>(ItemDaoImpl.java:19) [classes/:?]
+	at com.example.innowisefourthproject.service.impl.ItemServiceImpl.<init>(ItemServiceImpl.java:20) [classes/:?]
+	at com.example.innowisefourthproject.service.impl.ItemServiceImpl.<clinit>(ItemServiceImpl.java:19) [classes/:?]
+	at com.example.innowisefourthproject.api.ItemsApiServlet.<init>(ItemsApiServlet.java:19) [classes/:?]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) [?:?]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) [?:?]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) [?:?]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481) [?:?]
+	at org.apache.catalina.core.DefaultInstanceManager.newInstance(DefaultInstanceManager.java:144) [catalina.jar:10.1.55]
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:761) [catalina.jar:10.1.55]
+	at org.apache.catalina.core.StandardWrapper.allocate(StandardWrapper.java:578) [catalina.jar:10.1.55]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:113) [catalina.jar:10.1.55]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) [catalina.jar:10.1.55]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) [catalina.jar:10.1.55]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) [catalina.jar:10.1.55]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) [catalina.jar:10.1.55]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:782) [catalina.jar:10.1.55]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) [catalina.jar:10.1.55]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [catalina.jar:10.1.55]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) [tomcat-coyote.jar:10.1.55]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-coyote.jar:10.1.55]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272) [tomcat-coyote.jar:10.1.55]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1797) [tomcat-coyote.jar:10.1.55]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-coyote.jar:10.1.55]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) [tomcat-util.jar:10.1.55]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) [tomcat-util.jar:10.1.55]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-util.jar:10.1.55]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:684) ~[?:?]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547) ~[?:?]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[?:?]
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:261) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.PGStream.<init>(PGStream.java:122) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:146) ~[postgresql-42.7.7.jar:42.7.7]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:289) ~[postgresql-42.7.7.jar:42.7.7]
+	... 39 more
+2026-06-06 17:32:18 [http-nio-8080-exec-8] INFO  com.example.innowisefourthproject.controller.Controller - Servlet initialized: 
+2026-06-06 17:32:24 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.controller.Controller - Servlet initialized: 
+2026-06-06 17:33:02 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 3E3A20D870F01677C8C20C7B341C1843
+2026-06-06 17:33:02 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: A59E0F24EF029473052073EF4ECE6352
+2026-06-06 17:33:02 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 17:33:04 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 17:33:05 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: B0C474602176D9D67F52346CEDAFCF27
+2026-06-06 17:33:05 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: FE98A4747CA4825635774E29F17B9C3B
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Servlet initialized: 
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 17:33:10 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: login
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Command class: LoginCommand
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.dao.impl.UserDaoImpl - Find user by login: qwer
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:pages/main.jsp
+2026-06-06 17:33:11 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/main.jsp
+2026-06-06 17:33:21 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Find all item from db
+2026-06-06 17:33:21 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Foud 4 items
+2026-06-06 17:42:45 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was destroyed
+2026-06-06 17:42:45 [main] INFO  com.example.innowisefourthproject.controller.Controller - Servlet destroyed: 
+2026-06-06 17:42:45 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: FE98A4747CA4825635774E29F17B9C3B
+2026-06-06 17:42:45 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: B0C474602176D9D67F52346CEDAFCF27
+2026-06-06 17:42:45 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 17:42:49 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 17:42:50 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: CD7BADD5343B2C18E48C2BEC35E1FC59
+2026-06-06 17:42:50 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 09B62D714591DDCEDCE2B1615C196B53
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Find all item from db
+2026-06-06 17:43:31 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Foud 4 items
+2026-06-06 17:46:19 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 09B62D714591DDCEDCE2B1615C196B53
+2026-06-06 17:46:19 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: CD7BADD5343B2C18E48C2BEC35E1FC59
+2026-06-06 17:46:19 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 18:36:24 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 18:36:25 [http-nio-8080-exec-2] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: FDA7ED0F8F9E7FF149C99BD7B7732CAC
+2026-06-06 18:36:25 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: E50381A8F2F5442EDC2C0B789214306B
+2026-06-06 18:36:35 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Servlet initialized: 
+2026-06-06 18:36:35 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 18:36:35 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: login
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Command class: LoginCommand
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.dao.impl.UserDaoImpl - Find user by login: qwer
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:pages/main.jsp
+2026-06-06 18:36:36 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/main.jsp
+2026-06-06 18:36:44 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: show_items
+2026-06-06 18:36:44 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.controller.Controller - Command class: ShowItemsCommand
+2026-06-06 18:36:44 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Find all item from db
+2026-06-06 18:36:44 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Foud 4 items
+2026-06-06 18:36:44 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/items.jsp
+2026-06-06 18:36:45 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: open_add_item_page
+2026-06-06 18:36:45 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.controller.Controller - Command class: OpenAddItemPageCommand
+2026-06-06 18:36:45 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/add_item.jsp
+2026-06-06 18:36:51 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: add_item
+2026-06-06 18:36:51 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.controller.Controller - Command class: AddItemCommand
+2026-06-06 18:36:51 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Adding item with name: 1231
+2026-06-06 18:36:51 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Item insert result: true
+2026-06-06 18:36:51 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 18:36:51 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:pages/main.jsp
+2026-06-06 18:36:51 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: redirect:/controller?command=show_items
+2026-06-06 18:36:51 [http-nio-8080-exec-10] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: show_items
+2026-06-06 18:36:51 [http-nio-8080-exec-10] INFO  com.example.innowisefourthproject.controller.Controller - Command class: ShowItemsCommand
+2026-06-06 18:36:51 [http-nio-8080-exec-10] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Find all item from db
+2026-06-06 18:36:51 [http-nio-8080-exec-10] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Foud 5 items
+2026-06-06 18:36:51 [http-nio-8080-exec-10] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - <<<------->  attributeRemoved:null
+2026-06-06 18:36:51 [http-nio-8080-exec-10] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - <<<------->  attributeRemoved:pages/main.jsp
+2026-06-06 18:36:51 [http-nio-8080-exec-10] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/items.jsp
+2026-06-06 18:37:08 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: show_items
+2026-06-06 18:37:08 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.controller.Controller - Command class: ShowItemsCommand
+2026-06-06 18:37:08 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Find all item from db
+2026-06-06 18:37:08 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Foud 5 items
+2026-06-06 18:37:08 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/items.jsp
+2026-06-06 18:37:09 [http-nio-8080-exec-3] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: show_items
+2026-06-06 18:37:09 [http-nio-8080-exec-3] INFO  com.example.innowisefourthproject.controller.Controller - Command class: ShowItemsCommand
+2026-06-06 18:37:09 [http-nio-8080-exec-3] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Find all item from db
+2026-06-06 18:37:09 [http-nio-8080-exec-3] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Foud 5 items
+2026-06-06 18:37:09 [http-nio-8080-exec-3] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/items.jsp
+2026-06-06 18:37:16 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: show_items
+2026-06-06 18:37:16 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.controller.Controller - Command class: ShowItemsCommand
+2026-06-06 18:37:16 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Find all item from db
+2026-06-06 18:37:16 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.dao.impl.ItemDaoImpl - Foud 5 items
+2026-06-06 18:37:16 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: pages/items.jsp
+2026-06-06 18:39:28 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was destroyed
+2026-06-06 18:39:28 [main] INFO  com.example.innowisefourthproject.controller.Controller - Servlet destroyed: 
+2026-06-06 18:39:28 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: FDA7ED0F8F9E7FF149C99BD7B7732CAC
+2026-06-06 18:39:28 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: E50381A8F2F5442EDC2C0B789214306B
+2026-06-06 18:39:28 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 18:39:31 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 18:39:32 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 7CD621302073B36C7FAF8F3671869859
+2026-06-06 18:39:33 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 2A7BB6C34120ACD8B3B89C448DB5A064
+2026-06-06 18:39:34 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:39:37 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:39:38 [http-nio-8080-exec-9] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:39:38 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:39:38 [http-nio-8080-exec-3] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:39:39 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:39:40 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:39:57 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 2A7BB6C34120ACD8B3B89C448DB5A064
+2026-06-06 18:39:57 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 7CD621302073B36C7FAF8F3671869859
+2026-06-06 18:39:57 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 18:40:00 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 18:40:01 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 66A40CDB1000B3DE892B85A9679BAED7
+2026-06-06 18:40:01 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 9811BC8D188CF2628CA288B1674F2BEE
+2026-06-06 18:40:02 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:40:03 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:41:52 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 66A40CDB1000B3DE892B85A9679BAED7
+2026-06-06 18:41:52 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 9811BC8D188CF2628CA288B1674F2BEE
+2026-06-06 18:41:52 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 18:41:55 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 18:41:56 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 6196726CD8F795729332C4B5F7DD9553
+2026-06-06 18:41:56 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 12AFCB94A7986F6D7F1701864A0D9490
+2026-06-06 18:41:58 [http-nio-8080-exec-5] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:41:58 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.filter.SecurityFilter - Unauthorized access to protected page: /InnowiseFourthProject_war_exploded/pages/register.jsp
+2026-06-06 18:45:54 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 6196726CD8F795729332C4B5F7DD9553
+2026-06-06 18:45:54 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 12AFCB94A7986F6D7F1701864A0D9490
+2026-06-06 18:45:54 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 18:45:57 [RMI TCP Connection(2)-127.0.0.1] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - ++++++ contextInitialized : null
+2026-06-06 18:45:58 [http-nio-8080-exec-1] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 82F852F03B353C89A66C07DA794A24D0
+2026-06-06 18:45:59 [http-nio-8080-exec-4] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionCreated: 20424D0D0658544DC44DBA315D9505E2
+2026-06-06 18:46:11 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.controller.Controller - Servlet initialized: 
+2026-06-06 18:46:11 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 18:46:11 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 18:46:11 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 18:46:11 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 18:46:11 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 18:46:11 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.controller.Controller - Command from request: add_user
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.controller.Controller - Command class: AddUserCommand
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.dao.impl.UserDaoImpl - Check user exists by login: 123
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.dao.impl.UserDaoImpl - User DAO registration with login: 123
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.dao.impl.UserDaoImpl - User insert result: true
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - +++<<<------->  attributeAdded:null
+2026-06-06 18:46:12 [http-nio-8080-exec-6] INFO  com.example.innowisefourthproject.controller.Controller - Page after command: redirect:/index.jsp
+2026-06-06 18:46:12 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - <<<------->  attributeRemoved:null
+2026-06-06 18:46:12 [http-nio-8080-exec-7] INFO  com.example.innowisefourthproject.listner.SessionAttributeListenerImpl - <<<------->  attributeRemoved:null
+2026-06-06 18:57:11 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was destroyed
+2026-06-06 18:57:11 [main] INFO  com.example.innowisefourthproject.controller.Controller - Servlet destroyed: 
+2026-06-06 18:57:11 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 20424D0D0658544DC44DBA315D9505E2
+2026-06-06 18:57:11 [main] INFO  com.example.innowisefourthproject.listner.SessionCreateListenerImpl - ---------->  sessionDestroyed: 82F852F03B353C89A66C07DA794A24D0
+2026-06-06 18:57:11 [main] INFO  com.example.innowisefourthproject.listner.ServletContextListenerImpl - --------contextInitialized : Apache Tomcat/10.1.55
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 19:18:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 19:25:05 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 19:25:05 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error adding item
+2026-06-06 19:26:27 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 19:26:27 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 19:26:27 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 19:26:27 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 19:26:27 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 19:26:27 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 19:26:28 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 19:26:28 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 19:26:28 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 19:26:28 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 19:26:28 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 19:26:28 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error adding item
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 19:26:41 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 19:26:47 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 19:26:48 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 19:26:48 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 19:26:48 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error adding item
+2026-06-06 19:26:48 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of findById item
+2026-06-06 19:26:48 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of update item by id
+2026-06-06 19:26:48 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of finding all items
+2026-06-06 19:26:48 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of delete item by id
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 1 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 2 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 3 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 4 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 5 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 6 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 7 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 8 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 9 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection number 10 was created
+2026-06-06 19:27:24 [main] INFO  com.example.innowisefourthproject.pool.ConnectionPool - Connection pool was initialized. Pool size: 10
+2026-06-06 19:27:24 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error adding item
+2026-06-06 19:27:24 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of findById item
+2026-06-06 19:27:24 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of update item by id
+2026-06-06 19:27:24 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of finding all items
+2026-06-06 19:27:24 [main] ERROR com.example.innowisefourthproject.service.impl.ItemServiceImpl - Error of delete item by id

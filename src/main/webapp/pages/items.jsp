@@ -43,13 +43,13 @@
 
             <c:if test="${sessionScope.user.admin}">
                 <td>
-                    <a href="${pageContext.request.contextPath}/controller?command=open_edit_item_page&id=${item.id}">
+                    <a href="${pageContext.request.contextPath}/controller?command=open_edit_item_page&id=<c:out value='${item.id}'/>">
                         Edit
                     </a>
 
                     <form action="${pageContext.request.contextPath}/controller" method="post" style="display:inline;">
                         <input type="hidden" name="command" value="delete_item">
-                        <input type="hidden" name="id" value="${item.id}">
+                        <input type="hidden" name="id" value="<c:out value='${item.id}'/>">
                         <button type="submit">Delete</button>
                     </form>
                 </td>
@@ -59,7 +59,7 @@
                 <td>
                     <form action="${pageContext.request.contextPath}/controller" method="post">
                         <input type="hidden" name="command" value="create_order">
-                        <input type="hidden" name="item_id" value="${item.id}">
+                        <input type="hidden" name="item_id" value="<c:out value='${item.id}'/>">
                         <button type="submit">Order</button>
                     </form>
                 </td>

@@ -17,7 +17,9 @@
     </c:choose>
 </h2>
 
-<p style="color: green;"><c:out value="${order_msg}"/></p>
+<p style="color: green;">
+    <c:out value="${order_msg}"/>
+</p>
 
 <c:choose>
     <c:when test="${empty orders}">
@@ -42,12 +44,6 @@
 
             <c:forEach var="order" items="${orders}">
                 <tr>
-                    <td>${order.id}</td>
-
-                    <c:if test="${sessionScope.user.admin}">
-                        <td>${order.userId}</td>
-                    </c:if>
-
                     <td><c:out value="${order.id}"/></td>
 
                     <c:if test="${sessionScope.user.admin}">

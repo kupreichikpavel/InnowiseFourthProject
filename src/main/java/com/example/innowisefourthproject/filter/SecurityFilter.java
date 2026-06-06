@@ -42,6 +42,13 @@ public class SecurityFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
+        String requestURI = httpServletRequest.getRequestURI();
+
+        if (requestURI.endsWith("/pages/register.jsp")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
         HttpSession session = httpServletRequest.getSession(false);
 
         boolean isAuthorized = session != null && session.getAttribute(USER_ATTRIBUTE) != null;

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <html>
 <head>
@@ -22,6 +23,13 @@
 
     <button type="submit">Sign in</button>
 </form>
+
+<c:if test="${not empty sessionScope.register_msg}">
+    <p style="color: green;">
+        <c:out value="${sessionScope.register_msg}"/>
+    </p>
+    <c:remove var="register_msg" scope="session"/>
+</c:if>
 
 <p style="color:red;"><c:out value="${login_msg}"/></p>
 <hr>

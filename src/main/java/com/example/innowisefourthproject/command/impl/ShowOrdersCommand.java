@@ -8,6 +8,7 @@ import com.example.innowisefourthproject.exception.ServiceException;
 import com.example.innowisefourthproject.service.OrderService;
 import com.example.innowisefourthproject.service.impl.OrderServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
 
@@ -32,6 +33,17 @@ public class ShowOrdersCommand implements Command {
         try {
             List<Order> orders = orderService.findOrders(user);
             request.setAttribute(ORDERS_ATTRIBUTE, orders);
+
+            HttpSession session = request.getSession(false);
+
+            if (session != null) {
+                Object message = session.getAttribute(ORDER_MESSAGE_ATTRIBUTE);
+
+                if (message != null) {
+                    request.setAttribute(ORDER_MESSAGE_ATTRIBUTE, message);
+                    session.removeAttribute(ORDER_MESSAGE_ATTRIBUTE);
+                }
+            }
 
             return ORDERS_PAGE;
         } catch (ServiceException e) {

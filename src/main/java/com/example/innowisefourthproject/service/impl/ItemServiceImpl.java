@@ -17,13 +17,17 @@ public class ItemServiceImpl implements ItemService {
 
     private final Logger logger = LogManager.getLogger(ItemServiceImpl.class);
     private static final ItemServiceImpl instance = new ItemServiceImpl();
-    private final ItemDao itemDao = ItemDaoImpl.getInstance();
+    private ItemDao itemDao = ItemDaoImpl.getInstance();
 
     private ItemServiceImpl() {
     }
 
     public static ItemServiceImpl getInstance() {
         return instance;
+    }
+
+    ItemServiceImpl(ItemDao itemDao) {
+        this.itemDao = itemDao;
     }
 
     @Override

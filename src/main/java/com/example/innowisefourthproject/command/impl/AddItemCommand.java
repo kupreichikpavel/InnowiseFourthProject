@@ -1,39 +1,42 @@
 package com.example.innowisefourthproject.command.impl;
 
 import com.example.innowisefourthproject.command.Command;
-import com.example.innowisefourthproject.entity.Item;
+import com.example.innowisefourthproject.entity.User;
 import com.example.innowisefourthproject.exception.CommandException;
 import com.example.innowisefourthproject.exception.ServiceException;
 import com.example.innowisefourthproject.service.ItemService;
 import com.example.innowisefourthproject.service.impl.ItemServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.util.List;
+import jakarta.servlet.http.HttpSession;
 
 public class AddItemCommand implements Command {
     private static final String PARAM_NAME = "name";
     private static final String PARAM_DESCRIPTION = "description";
     private static final String PARAM_PRICE = "price";
 
-    private static final String ADD_ITEM_PAGE = "pages/add_item.jsp";
-    private static final String ITEMS_PAGE = "pages/items.jsp";
+    private static final String INDEX_PAGE = "index.jsp";
+    private static final String REDIRECT_SHOW_ITEMS = "redirect:/controller?command=show_items";
 
     private static final String ITEM_MESSAGE_ATTRIBUTE = "item_msg";
-    private static final String ITEMS_ATTRIBUTE = "items";
 
     private final ItemService itemService = ItemServiceImpl.getInstance();
-    private static final Logger logger = LogManager.getLogger(AddItemCommand.class);
-
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        if (!CommandUtils.isAdmin(request)) {
-            request.setAttribute(ITEM_MESSAGE_ATTRIBUTE, "Access denied");
-            CommandUtils.loadItems(request, itemService);
-            return ITEMS_PAGE;
+        User user = CommandUtils.getCurrentUser(request);
+
+        if (user == null) {
+            request.setAttribute(ITEM_MESSAGE_ATTRIBUTE, "You must sign in first");
+            return INDEX_PAGE;
         }
+
+        HttpSession session = request.getSession();
+
+        if (!user.isAdmin()) {
+            session.setAttribute(ITEM_MESSAGE_ATTRIBUTE, "Access denied");
+            return REDIRECT_SHOW_ITEMS;
+        }
+
         String name = request.getParameter(PARAM_NAME);
         String description = request.getParameter(PARAM_DESCRIPTION);
         String price = request.getParameter(PARAM_PRICE);
@@ -42,16 +45,15 @@ public class AddItemCommand implements Command {
             boolean added = itemService.add(name, description, price);
 
             if (added) {
-                request.setAttribute(ITEM_MESSAGE_ATTRIBUTE, "It was added ");
-                List<Item> items = itemService.findAll();
-                request.setAttribute(ITEMS_ATTRIBUTE, items);
-                return ITEMS_PAGE;
+                session.setAttribute(ITEM_MESSAGE_ATTRIBUTE, "Item was added successfully");
+            } else {
+                session.setAttribute(ITEM_MESSAGE_ATTRIBUTE, "Item was not added");
             }
-            request.setAttribute(ITEM_MESSAGE_ATTRIBUTE, "It wasn't added");
-            return ADD_ITEM_PAGE;
+
+            return REDIRECT_SHOW_ITEMS;
         } catch (ServiceException e) {
-            logger.error("Error added item ");
-            throw new CommandException("Failed adding items", e);
+            session.setAttribute(ITEM_MESSAGE_ATTRIBUTE, e.getMessage());
+            return REDIRECT_SHOW_ITEMS;
         }
     }
 }
