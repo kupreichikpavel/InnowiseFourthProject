@@ -29,6 +29,10 @@ public class ItemsApiServlet extends HttpServlet {
 
         if (session == null || session.getAttribute("user") == null) {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            try (PrintWriter writer = resp.getWriter()) {
+                writer.write("{\"error\":\"Unauthorized\"}");
+            }
+            return;
         }
         try {
             List<Item> items = itemService.findAll();
