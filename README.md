@@ -2,7 +2,7 @@
 
 Java Web application based on Servlets, JSP, JDBC and PostgreSQL.
 
-Проект представляет собой простое web-приложение интернет-магазина, где пользователь может зарегистрироваться, войти в систему, просматривать товары и создавать заказы. Администратор может управлять товарами и обрабатывать заказы.
+Проект представляет собой учебное web-приложение интернет-магазина. Пользователь может зарегистрироваться, войти в систему, просматривать товары и создавать заказы. Администратор может управлять товарами и обрабатывать заказы.
 
 ## Technologies
 
@@ -17,14 +17,17 @@ Java Web application based on Servlets, JSP, JDBC and PostgreSQL.
 * Log4J2
 * Lombok
 * JUnit 5
+* Mockito
 
 ## Architecture
 
-Проект реализован с использованием layered architecture и MVC.
+Проект реализован с использованием Layered Architecture и MVC.
 
-Основные слои приложения:
+Основная цепочка обработки запроса:
 
 ```text
+Browser
+↓
 Controller
 ↓
 Command
@@ -33,28 +36,25 @@ Service
 ↓
 DAO
 ↓
-Database
+PostgreSQL
 ```
 
-### Main packages
+### Main layers
 
 ```text
-com.example.innowisefourthproject
-├── command       # Command pattern classes
-├── controller    # Main controller servlet
-├── dao           # DAO interfaces
-├── dao.impl      # JDBC DAO implementations
-├── entity        # Entity classes
-├── exception     # Custom exceptions
-├── filter        # Servlet filters
-├── listener      # Servlet/session listeners
-├── pool          # Custom connection pool
-├── service       # Service interfaces
-├── service.impl  # Business logic
-└── util          # Utility classes
+controller    — главный Servlet-контроллер
+command       — обработчики пользовательских действий
+service       — бизнес-логика приложения
+dao           — интерфейсы для работы с БД
+dao.impl      — JDBC-реализации DAO
+entity        — сущности предметной области
+filter        — Servlet filters
+pool          — connection pool
+util          — вспомогательные классы
+api           — web-service endpoints
 ```
 
-## Features
+## Main functionality
 
 ### User
 
@@ -62,12 +62,14 @@ com.example.innowisefourthproject
 * Login
 * Logout
 * View products
-* Create orders
+* Create order
 * View own orders
 * Cancel own orders
 
 ### Admin
 
+* Login
+* Logout
 * View products
 * Add products
 * Edit products
@@ -85,15 +87,23 @@ USER
 ADMIN
 ```
 
-Regular users are created with the `USER` role by default.
+A new registered user receives the `USER` role by default.
 
-Admin users can be created manually in the database or inserted through `schema.sql`.
+An administrator can be created through the database schema or by manually updating the user role in the database.
+
+Example:
+
+```sql
+UPDATE users
+SET role = 'ADMIN'
+WHERE login = 'admin';
+```
 
 ## Database
 
 The project uses PostgreSQL.
 
-Recommended database tables:
+Main tables:
 
 ```text
 users
@@ -103,27 +113,48 @@ orders
 
 ### Database configuration
 
-Database connection settings are located in:
+Database connection properties are stored in:
 
 ```text
 src/main/resources/db.properties
 ```
 
-Example:
+Recommended local configuration example:
 
 ```properties
 db.driver=org.postgresql.Driver
 db.url=jdbc:postgresql://localhost:5432/postgres
-db.user=postgres
-db.password=qwerty
+db.user=YOUR_DATABASE_USER
+db.password=YOUR_DATABASE_PASSWORD
 db.poolSize=10
 ```
 
-Before running the project, make sure PostgreSQL is running and the database exists.
+For security reasons, real database credentials should not be committed to GitHub.
 
-### Database schema
+Recommended approach:
 
-The schema file creates tables and inserts test data.
+```text
+db.properties.example — committed to GitHub
+db.properties         — local file ignored by Git
+```
+
+## Database schema
+
+The schema script should create the following tables:
+
+```text
+users
+items
+orders
+```
+
+The `orders` table supports statuses:
+
+```text
+CREATED
+CANCELLED
+COMPLETED
+```
 
 Example test users:
 
@@ -139,37 +170,49 @@ password: user
 role: USER
 ```
 
-Be careful: the schema script may contain `DROP TABLE`, so running it will delete existing data.
-
 ## How to run
 
-1. Clone the repository:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/kupreichikpavel/InnowiseFourthProject.git
 ```
 
-2. Open the project in IntelliJ IDEA.
+### 2. Open the project
 
-3. Configure PostgreSQL connection in:
+Open the project in IntelliJ IDEA.
+
+### 3. Configure PostgreSQL
+
+Create or check your PostgreSQL database.
+
+Update local database settings in:
 
 ```text
 src/main/resources/db.properties
 ```
 
-4. Run the database schema script.
+### 4. Run database schema
 
-5. Build the project with Maven:
+Execute the SQL schema script in PostgreSQL.
+
+### 5. Build the project
 
 ```bash
 mvn clean package
 ```
 
-6. Configure Apache Tomcat 10.
+### 6. Configure Tomcat
 
-7. Deploy the project as WAR exploded.
+Use Apache Tomcat 10.
 
-8. Open the application in browser:
+Deploy the project as:
+
+```text
+InnowiseFourthProject:war exploded
+```
+
+### 7. Open the application
 
 ```text
 http://localhost:8080/InnowiseFourthProject_war_exploded/
@@ -178,19 +221,19 @@ http://localhost:8080/InnowiseFourthProject_war_exploded/
 ## Main pages
 
 ```text
-/index.jsp                  # Login page
-/pages/register.jsp         # Registration page
-/pages/main.jsp             # Main page after login
-/pages/items.jsp            # Product list
-/pages/add_item.jsp         # Add product page
-/pages/edit_item.jsp        # Edit product page
-/pages/orders.jsp           # Orders page
-/pages/error_500.jsp        # Server error page
+/index.jsp                  — login page
+/pages/register.jsp         — registration page
+/pages/main.jsp             — main page
+/pages/items.jsp            — product list
+/pages/add_item.jsp         — add product page
+/pages/edit_item.jsp        — edit product page
+/pages/orders.jsp           — orders page
+/pages/error_500.jsp        — error page
 ```
 
-## Main commands
+## Main controller
 
-All requests are processed through the main controller:
+All main UI actions are processed through:
 
 ```text
 /controller
@@ -203,22 +246,53 @@ Examples:
 /controller?command=show_orders
 ```
 
-Supported commands include:
+## Main commands
 
 ```text
 login
 logout
 add_user
+
 show_items
 open_add_item_page
 add_item
 open_edit_item_page
 update_item
 delete_item
+
 create_order
 show_orders
 cancel_order
 complete_order
+```
+
+## Web-service
+
+The project contains a simple API endpoint:
+
+```text
+GET /api/items
+```
+
+It returns a JSON list of products.
+
+Example response:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Ноутбук Lenovo",
+    "description": "Учебный ноутбук для Java-разработки",
+    "price": 1200.00
+  }
+]
+```
+
+The endpoint is implemented in:
+
+```text
+com.example.innowisefourthproject.api.ItemsApiServlet
 ```
 
 ## Security
@@ -226,13 +300,14 @@ complete_order
 The project includes:
 
 * Password hashing
-* Role-based access logic
-* SQL injection protection through `PreparedStatement`
 * Session-based authentication
-* UTF-8 encoding filter
-* Security filter for protected pages
+* Role-based access control
+* SQL injection protection through `PreparedStatement`
+* XSS protection through JSTL `<c:out>`
 * Security headers filter
-* JSTL usage instead of JSP scriptlets
+* Protected JSP pages through `SecurityFilter`
+* UTF-8 request/response encoding through `EncodingFilter`
+* Post/Redirect/Get approach for POST operations
 
 ## Filters
 
@@ -250,22 +325,33 @@ Sets UTF-8 encoding for requests and responses.
 
 ### SecurityFilter
 
-Protects `/pages/*` from unauthorized access.
+Protects pages inside:
+
+```text
+/pages/*
+```
+
+Unauthorized users are redirected to:
+
+```text
+/index.jsp
+```
 
 ### SecurityHeadersFilter
 
-Adds basic security headers such as:
+Adds security headers:
 
 ```text
 X-Content-Type-Options
 X-Frame-Options
 Referrer-Policy
 Content-Security-Policy
+X-XSS-Protection
 ```
 
-## Connection Pool
+## Connection pool
 
-The project uses a custom thread-safe connection pool.
+The project uses a custom connection pool.
 
 Connection settings are loaded from:
 
@@ -285,30 +371,153 @@ The application logs:
 * DAO operations
 * Service operations
 * Connection pool initialization
-* Errors and exceptional situations
+* Exceptional situations
 
-## Current project status
+## Tests
+
+The project uses JUnit 5 and Mockito.
+
+Test classes are located in:
+
+```text
+src/test/java
+```
+
+Implemented service tests:
+
+```text
+ItemServiceImplTest
+UserServiceImplTest
+OrderServiceImplTest
+```
+
+Run tests:
+
+```bash
+mvn clean test
+```
+
+## Project structure
+
+```text
+InnowiseFourthProject
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com.example.innowisefourthproject
+│   │   │       ├── api
+│   │   │       ├── command
+│   │   │       ├── controller
+│   │   │       ├── dao
+│   │   │       ├── entity
+│   │   │       ├── exception
+│   │   │       ├── filter
+│   │   │       ├── listner
+│   │   │       ├── pool
+│   │   │       ├── router
+│   │   │       ├── service
+│   │   │       └── util
+│   │   ├── resources
+│   │   └── webapp
+│   │       ├── index.jsp
+│   │       └── pages
+│   └── test
+│       └── java
+│           └── com.example.innowisefourthproject
+├── pom.xml
+├── README.md
+└── .gitignore
+```
+
+## Design patterns used
+
+The project uses several design patterns:
+
+```text
+MVC
+Layered Architecture
+DAO
+Command
+Singleton
+Front Controller
+```
+
+### MVC
+
+JSP pages are used as View, `Controller` and `Command` classes process requests, and Service/DAO layers work with business logic and database access.
+
+### DAO
+
+DAO classes hide SQL and JDBC details from the service layer.
+
+### Command
+
+Each user action is represented as a separate command class.
+
+Examples:
+
+```text
+LoginCommand
+ShowItemsCommand
+CreateOrderCommand
+CancelOrderCommand
+```
+
+### Singleton
+
+Several service and DAO implementations use singleton-style access through `getInstance()`.
+
+## Useful SQL checks
+
+Show users:
+
+```sql
+SELECT id, login, name, role
+FROM users;
+```
+
+Show items:
+
+```sql
+SELECT id, name, description, price
+FROM items;
+```
+
+Show orders:
+
+```sql
+SELECT o.id,
+       o.user_id,
+       o.item_id,
+       i.name AS item_name,
+       i.price AS item_price,
+       o.status,
+       o.created_at
+FROM orders o
+JOIN items i ON i.id = o.item_id
+ORDER BY o.created_at DESC;
+```
+
+## Current status
 
 Implemented:
 
-* Layered architecture
-* MVC
-* Command pattern
-* DAO pattern
-* Singleton usage
-* JDBC database access
-* PostgreSQL schema
 * User registration
-* User authorization
+* User login
 * User logout
+* Role separation: USER / ADMIN
 * Product CRUD
 * Order creation
 * Order cancellation
 * Order completion by admin
+* Web-service `/api/items`
 * Filters
 * Logging
-* JSTL pages
-
+* PostgreSQL database access
+* Custom connection pool
+* JUnit and Mockito tests
+* Maven build
+* GitHub repository
 
 ## Author
 
